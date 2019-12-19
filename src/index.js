@@ -98,6 +98,11 @@ bot.onText(/\/cobrar/, (msg) => {
   bot.sendMessage(msg.chat.id, "Ei galera, esquece de pagar não =) " + "https://picpay.me/renanbandeira");
 });
 
+bot.on('location', (msg) => {
+  console.log('received live location');
+  bot.sendMessage(msg.chat.id, "Seu pedido está indo até você");
+});
+
 bot.onText(/\/quero (\d+)/, (msg, match) => {
   login();
   firebase.auth().onAuthStateChanged(function(user) {
