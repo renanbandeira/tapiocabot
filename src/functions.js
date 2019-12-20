@@ -45,6 +45,7 @@ module.exports = {
       bot.sendMessage(msg.chat.id, "Tranquilo, man. Vou cancelar teu pedido");
     } else if (qty > 30){
       bot.sendMessage(msg.chat.id, "Vai, guloso..a produção não dá pra fazer tanto assim não =/ Máx: 30");
+      return;
     } else {
       bot.sendMessage(msg.chat.id, msgToAnswer + date + ")");
     }
