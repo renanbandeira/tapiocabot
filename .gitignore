@@ -46,9 +46,6 @@ build/Release
 # Dependency directories
 node_modules/
 
-#Security folder
-src/security/*.js
-
 # Optional npm cache directory
 .npm
 
