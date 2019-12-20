@@ -1,0 +1,16 @@
+{
+  "build": {
+    "env": {
+      "TELEGRAM_TOKEN": "@telegram_token",
+      "EMAIL": "@email",
+      "PASSWORD": "@password",
+      "FIREBASE_APIKEY": "@firebase_apikey",
+      "FIREBASE_AUTHDOMAIN": "@firebase_authdomain",
+      "FIREBASE_URL": "@firebase_url",
+      "FIREBASE_PROJECT": "@firebase_project",
+      "FIREBASE_BUCKET": "@firebase_project",
+      "FIREBASE_SENDERID": "@firebase_senderid",
+      "FIREBASE_APPID": "@firebase_appid"
+    }
+  }
+}

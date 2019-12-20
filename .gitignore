@@ -66,3 +66,4 @@ src/security/*.js
 
 # dotenv environment variables file
 .env
+.env.build

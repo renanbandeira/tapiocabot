@@ -1,12 +1,17 @@
 const TelegramBot = require('node-telegram-bot-api');
 const firebase = require('firebase');
 
-const token = require('./security/token');
+
+const token = process.env.TELEGRAM_TOKEN;
 const bot = new TelegramBot(token, {polling: true});
 const operations = require('./functions');
 
 const firebaseConfig = require('./security/firebaseConfig');
-const auth = require('./security/auth');
+const auth = {
+  email: process.env.EMAIL,
+  password: process.env.PASSWORD
+};
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
