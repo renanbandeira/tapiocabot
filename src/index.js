@@ -28,61 +28,6 @@ function login() {
 const ref = firebase.database().ref();
 const ordersRef = ref.child("orders");
 
-/*
-function listOrders(msg) {
-  const today = new Date();
-  const tomorrow = new Date();
-  tomorrow.setDate(today.getDate() + 1);
-  let date = formatDate(today);
-  if (today.getHours() >= 8) {
-    date = formatDate(tomorrow);
-  }
-
-  ordersRef.child(date).once('value').then(function(snapshot) {
-    const orders = snapshot.val() || [];
-    console.log(orders);
-    let ordersString = "Pedidos (" + date + ")";
-    orders.forEach(order => {
-      ordersString += "\n" + order.name + " - " + order.qty;
-    });
-    bot.sendMessage(msg.chat.id, ordersString);
-  });
-}
-
-
-function addOrder(msg, orderQty) {
-  const userName = msg.from.first_name;
-  const today = new Date();
-  const tomorrow = new Date();
-  tomorrow.setDate(today.getDate() + 1);
-  let date = formatDate(today);
-  if (today.getHours() < 8) {
-    bot.sendMessage(msg.chat.id, "Então, vou dar um jeitinho pra reservar pra ti ainda hoje (" +
-      date +")");
-  } else {
-    date = formatDate(tomorrow);
-    bot.sendMessage(msg.chat.id, "Blz ma, vou registrar pra amanhã (" +
-      date +")");
-  }
-
-  ordersRef.child(date).push().set({
-    name: userName,
-    qty: orderQty
-  });
-
-  ordersRef.child(date).once('value').then(function(snapshot) {
-    const orders = snapshot.val() || [];
-    console.log(orders);
-    let ordersString = "Pedidos (" + date + ")";
-    orders.forEach(order => {
-      ordersString += "\n" + order.name + " - " + order.qty;
-    });
-    bot.sendMessage(msg.chat.id, ordersString);
-  });
-}
-
-*/
-
 bot.onText(/\/pedidos/, (msg, match) => {
   login();
   firebase.auth().onAuthStateChanged(function(user) {
