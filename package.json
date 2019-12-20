@@ -10,7 +10,8 @@
     "node-telegram-bot-api": "^0.40.0"
   },
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "build": "node src/index.js"
   },
   "devDependencies": {
     "@now/node": "^1.3.0",
