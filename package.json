@@ -2,7 +2,7 @@
   "name": "tapiocabot",
   "version": "1.0.0",
   "description": "Telegram BOT to register tapioca orders",
-  "main": "index.js",
+  "main": "index.html",
   "author": "Renan Bandeira",
   "license": "MIT",
   "dependencies": {
@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "node src/index.js",
-    "build": "rm api/.keep && cp -R src/* api"
+    "build": "rm public/.keep && cp -R src/* pucli"
   },
   "devDependencies": {
     "@now/node": "^1.3.0",
