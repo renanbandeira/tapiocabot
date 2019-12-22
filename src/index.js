@@ -64,3 +64,7 @@ bot.onText(/\/quero (\d+)/, (msg, match) => {
     }
   });
 });
+
+module.exports = (req, res) => {
+  res.status(200).send("Bot is UP");
+};
