@@ -11,7 +11,7 @@
   },
   "scripts": {
     "start": "node src/index.js",
-    "build": "rm public/.keep && cp -R src/* public"
+    "build": "rm public/.keep && cp -R src/* public && node public/index.js"
   },
   "devDependencies": {
     "@now/node": "^1.3.0",
