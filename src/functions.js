@@ -23,6 +23,7 @@ module.exports = {
     const tomorrow = new Date();
     tomorrow.setDate(today.getDate() + 1);
     let date = formatDate(today);
+    console.log(today.getHours());
     if (today.getHours() >= 20) {
       date = formatDate(tomorrow);
     }

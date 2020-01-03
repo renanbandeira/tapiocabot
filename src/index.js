@@ -44,6 +44,14 @@ bot.onText(/\/quero (\D+)/, (msg, match) => {
   bot.sendMessage(msg.chat.id, "Isso é um NaN, man! Só aceito dígito pra pedir tapioca", { reply_to_message_id: msg.message_id });
 });
 
+bot.onText(/quero (\D+)/, (msg, match) => {
+  bot.sendMessage(msg.chat.id, "Isso é um NaN, man! Só aceito dígito pra pedir tapioca", { reply_to_message_id: msg.message_id });
+});
+
+bot.onText(/Quero (\D+)/, (msg, match) => {
+  bot.sendMessage(msg.chat.id, "Isso é um NaN, man! Só aceito dígito pra pedir tapioca", { reply_to_message_id: msg.message_id });
+});
+
 bot.onText(/\/cobrar/, (msg) => {
   bot.sendMessage(msg.chat.id, "Ei galera, esquece de pagar não =) " + "https://picpay.me/renanbandeira");
 });
@@ -54,6 +62,18 @@ bot.on('location', (msg) => {
 });
 
 bot.onText(/\/quero (\d+)/, (msg, match) => {
+  login();
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      console.log('user is signed in');
+      operations.addOrder(msg, match[1], ordersRef, bot);
+    } else {
+      console.log('user is signed out');
+    }
+  });
+});
+
+bot.onText(/Quero (\d+)/, (msg, match) => {
   login();
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
