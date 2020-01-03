@@ -23,7 +23,7 @@ module.exports = {
     const tomorrow = new Date();
     tomorrow.setDate(today.getDate() + 1);
     let date = formatDate(today);
-    if (today.getHours() >= 8) {
+    if (today.getHours() >= 20) {
       date = formatDate(tomorrow);
     }
     getOrdersFromDay(msg, ordersRef, bot, date);
@@ -36,7 +36,7 @@ module.exports = {
     tomorrow.setDate(today.getDate() + 1);
     let date = formatDate(today);
     let msgToAnswer = "Então, vou dar um jeitinho pra reservar pra ti ainda hoje (";
-    if (today.getHours() >= 8) {
+    if (today.getHours() >= 20) {
       date = formatDate(tomorrow);
       msgToAnswer = "Blz ma, vou registrar pra amanhã (";
     }
