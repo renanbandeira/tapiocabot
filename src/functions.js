@@ -24,7 +24,7 @@ module.exports = {
     tomorrow.setDate(today.getDate() + 1);
     let date = formatDate(today);
     console.log(today.getHours());
-    if (today.getHours() >= 20) {
+    if (today.getHours() >= 13) {
       date = formatDate(tomorrow);
     }
     getOrdersFromDay(msg, ordersRef, bot, date);
@@ -37,7 +37,7 @@ module.exports = {
     tomorrow.setDate(today.getDate() + 1);
     let date = formatDate(today);
     let msgToAnswer = "Então, vou dar um jeitinho pra reservar pra ti ainda hoje (";
-    if (today.getHours() >= 20) {
+    if (today.getHours() >= 13) {
       date = formatDate(tomorrow);
       msgToAnswer = "Blz ma, vou registrar pra amanhã (";
     }
