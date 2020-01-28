@@ -61,6 +61,18 @@ bot.on('location', (msg) => {
   bot.sendMessage(msg.chat.id, "Seu pedido está indo até você");
 });
 
+bot.onText(/\/quero/, (msg, match) => {
+  login();
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      console.log('user is signed in');
+      operations.addOrder(msg, 1, ordersRef, bot);
+    } else {
+      console.log('user is signed out');
+    }
+  });
+});
+
 bot.onText(/\/quero (\d+)/, (msg, match) => {
   login();
   firebase.auth().onAuthStateChanged(function(user) {
