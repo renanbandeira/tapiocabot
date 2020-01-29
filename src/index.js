@@ -62,15 +62,18 @@ bot.on('location', (msg) => {
 });
 
 bot.onText(/\/quero/, (msg, match) => {
-  login();
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      console.log('user is signed in');
-      operations.addOrder(msg, 1, ordersRef, bot);
-    } else {
-      console.log('user is signed out');
-    }
-  });
+  const textMessage = msg.text || '';
+  if (textMessage === '\/quero' || textMessage === '\/quero@tapioca_bot') {
+    login();
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        console.log('user is signed in');
+        operations.addOrder(msg, 1, ordersRef, bot);
+      } else {
+        console.log('user is signed out');
+      }
+    });
+  }
 });
 
 bot.onText(/\/quero (\d+)/, (msg, match) => {
