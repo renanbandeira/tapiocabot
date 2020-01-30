@@ -24,7 +24,7 @@ module.exports = {
     tomorrow.setDate(today.getDate() + 1);
     let date = formatDate(today);
     console.log(today.getHours());
-    if (today.getHours() >= 13) {
+    if (today.getHours() >= 12) {
       date = formatDate(tomorrow);
     }
     getOrdersFromDay(msg, ordersRef, bot, date);
