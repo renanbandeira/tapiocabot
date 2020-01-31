@@ -77,6 +77,22 @@ bot.onText(/\/quero/, (msg, match) => {
   }
 });
 
+bot.onText(/\/pedir (\d+) (.+)/, (msg, match) => {
+  if (msg.from.id != 174773484) {
+    console.log('Usuário não é o admin');
+    return;
+  }
+  login();
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      console.log('user is signed in');
+      operations.addOrder(msg, match[1], ordersRef, bot, match[2]);
+    } else {
+      console.log('user is signed out');
+    }
+  });
+});
+
 bot.onText(/\/quero (\d+)/, (msg, match) => {
   login();
   firebase.auth().onAuthStateChanged(function(user) {

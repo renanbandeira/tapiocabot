@@ -39,9 +39,9 @@ module.exports = {
     }
     getOrdersFromDay(msg, ordersRef, bot, date);
   },
-  addOrder: function(msg, orderQty, ordersRef, bot) {
+  addOrder: function(msg, orderQty, ordersRef, bot, user) {
     let qty = Number(orderQty);
-    const userName = msg.from.first_name;
+    const userName = user ? user : msg.from.first_name;
     const today = new Date();
     const tomorrow = new Date();
     let dayString = 'amanhã';
