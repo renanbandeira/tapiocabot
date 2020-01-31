@@ -7,12 +7,15 @@ function getOrdersFromDay(msg, ordersRef, bot, date) {
     const orders = snapshot.val() || {};
     console.log('orders', orders);
     let ordersString = "Pedidos (" + date + ")";
+    let total = 0;
     if (Object.keys(orders).length === 0) {
       ordersString += "\n Sem pedidos para essa data";
     }
     Object.keys(orders).forEach(orderKey => {
       ordersString += "\n" + orderKey + " - " + orders[orderKey];
+      total += orders[orderKey];
     });
+    ordersString += "\n\n Total: " + total + " tapiocas";
     bot.sendMessage(msg.chat.id, ordersString);
   });
 }

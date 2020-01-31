@@ -29,6 +29,7 @@ const ref = firebase.database().ref();
 const ordersRef = ref.child("orders");
 
 bot.onText(/\/pedidos/, (msg, match) => {
+  console.log('user id', msg.from.id);
   login();
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
