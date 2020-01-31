@@ -21,10 +21,14 @@ module.exports = {
   listOrders: function(msg, ordersRef, bot) {
     const today = new Date();
     const tomorrow = new Date();
-    tomorrow.setDate(today.getDate() + 1);
     let date = formatDate(today);
-    console.log(today.getHours());
     if (today.getHours() >= 12) {
+      if (today.getDay() >= 5) {
+        const nextDay = 8 - today.getDay();
+        tomorrow.setDate(today.getDate() + nextDay);
+      } else {
+        tomorrow.setDate(today.getDate() + 1);
+      }
       date = formatDate(tomorrow);
     }
     getOrdersFromDay(msg, ordersRef, bot, date);
@@ -34,12 +38,19 @@ module.exports = {
     const userName = msg.from.first_name;
     const today = new Date();
     const tomorrow = new Date();
-    tomorrow.setDate(today.getDate() + 1);
+    let dayString = 'amanhã';
     let date = formatDate(today);
     let msgToAnswer = "Então, vou dar um jeitinho pra reservar pra ti ainda hoje (";
-    if (today.getHours() >= 13) {
+    if (today.getHours() >= 12) {
+      if (today.getDay() >= 5) {
+        const nextDay = 8 - today.getDay();
+        dayString = 'segunda';
+        tomorrow.setDate(today.getDate() + nextDay);
+      } else {
+        tomorrow.setDate(today.getDate() + 1);
+      }
       date = formatDate(tomorrow);
-      msgToAnswer = "Blz ma, vou registrar pra amanhã (";
+      msgToAnswer = "Blz ma, vou registrar pra " + dayString + " (";
     }
     if (qty <= 0) {
       qty = null;
