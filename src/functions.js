@@ -22,13 +22,16 @@ module.exports = {
     const today = new Date();
     const tomorrow = new Date();
     let date = formatDate(today);
-    if (today.getHours() >= 12) {
-      if (today.getDay() >= 5) {
-        const nextDay = 8 - today.getDay();
-        tomorrow.setDate(today.getDate() + nextDay);
-      } else {
-        tomorrow.setDate(today.getDate() + 1);
-      }
+    let dateShouldBeDifferentThanToday = today.getHours() >= 12;
+    if (today.getDay() >= 5) {
+      dateShouldBeDifferentThanToday = true;
+      const nextDay = 8 - today.getDay();
+      tomorrow.setDate(today.getDate() + nextDay);
+    } else {
+      dateShouldBeDifferentThanToday = dateShouldBeDifferentThanToday || today.getDay() === 0;
+      tomorrow.setDate(today.getDate() + 1);
+    }
+    if (dateShouldBeDifferentThanToday) {
       date = formatDate(tomorrow);
     }
     getOrdersFromDay(msg, ordersRef, bot, date);
@@ -40,15 +43,18 @@ module.exports = {
     const tomorrow = new Date();
     let dayString = 'amanhã';
     let date = formatDate(today);
+    let dateShouldBeDifferentThanToday = today.getHours() >= 12;
     let msgToAnswer = "Então, vou dar um jeitinho pra reservar pra ti ainda hoje (";
-    if (today.getHours() >= 12) {
-      if (today.getDay() >= 5) {
-        const nextDay = 8 - today.getDay();
-        dayString = 'segunda';
-        tomorrow.setDate(today.getDate() + nextDay);
-      } else {
-        tomorrow.setDate(today.getDate() + 1);
-      }
+    if (today.getDay() >= 5) {
+      dateShouldBeDifferentThanToday = true;
+      const nextDay = 8 - today.getDay();
+      dayString = 'segunda';
+      tomorrow.setDate(today.getDate() + nextDay);
+    } else {
+      dateShouldBeDifferentThanToday = dateShouldBeDifferentThanToday || today.getDay() === 0;
+      tomorrow.setDate(today.getDate() + 1);
+    }
+    if (dateShouldBeDifferentThanToday) {
       date = formatDate(tomorrow);
       msgToAnswer = "Blz ma, vou registrar pra " + dayString + " (";
     }
