@@ -54,7 +54,11 @@ bot.onText(/Quero (\D+)/, (msg, match) => {
 });
 
 bot.onText(/\/cobrar/, (msg) => {
-  bot.sendMessage(msg.chat.id, "Ei galera, esquece de pagar não =) " + "https://picpay.me/renanbandeira");
+  bot.sendMessage(msg.chat.id, "Ei galera, esquece de pagar não =) ");
+  bot.sendMessage(msg.chat.id, "PicPay? " + "https://picpay.me/renanbandeira/2.0");
+  bot.sendMessage(msg.chat.id, "Nubank? " + "https://nubank.com.br/pagar/p7t4/Y0o8CQgqcr");
+  bot.sendMessage(msg.chat.id, "MercadoPago? " + "http://mpago.la/3FHdLZ");
+  bot.sendMessage(msg.chat.id, "Se quiser deixar um valor de saldo pra pedidos, pode ficar à vontade tb :)");
 });
 
 bot.on('location', (msg) => {
