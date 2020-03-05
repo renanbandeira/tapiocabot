@@ -26,7 +26,7 @@ module.exports = {
     const tomorrow = new Date();
     let date = formatDate(today);
     let dateShouldBeDifferentThanToday = today.getHours() >= 12;
-    if (today.getDay() >= 5) {
+    if (today.getDay() >= 5 && today.getHours() >= 12) {
       dateShouldBeDifferentThanToday = true;
       const nextDay = 8 - today.getDay();
       tomorrow.setDate(today.getDate() + nextDay);
@@ -48,7 +48,7 @@ module.exports = {
     let date = formatDate(today);
     let dateShouldBeDifferentThanToday = today.getHours() >= 12;
     let msgToAnswer = "Então, vou dar um jeitinho pra reservar pra ti ainda hoje (";
-    if (today.getDay() >= 5) {
+    if (today.getDay() >= 5 && today.getHours() >= 12) {
       dateShouldBeDifferentThanToday = true;
       const nextDay = 8 - today.getDay();
       dayString = 'segunda';
